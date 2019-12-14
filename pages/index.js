@@ -13,11 +13,30 @@ import BatIcon from '../assets/ic-animals-tabs.svg';
 import {CircularProgress} from "@material-ui/core";
 import Box from '@material-ui/core/Box';
 import CardList from '../components/CardList';
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/core/SvgIcon/SvgIcon";
+
+const fabStyled = makeStyles(theme => ({
+	fab: {
+		position: 'absolute',
+		right: 0,
+		bottom: 0,
+	},
+}));
+
+function AddFab () {
+	return (
+		<Fab className={fabStyled.fab} color="primary" aria-label="add">
+			<AddIcon />
+		</Fab>
+	)
+}
 
 export default function Index(props) {
 	return (
 		<AppLayout>
 			<CustomizedTabs/>
+			<AddFab />
 		</AppLayout>
 	)
 }

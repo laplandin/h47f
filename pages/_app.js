@@ -30,11 +30,6 @@ export default class MyApp extends App {
         <Head>
           <title>My page</title>
 					<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700&display=swap" rel="stylesheet"/>
-					<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-					<script src="https://cdn.jsdelivr.net/npm/@editorjs/paragraph@2.0.2"></script>
-					<script src="https://cdn.jsdelivr.net/npm/@editorjs/link@2.0.0"></script>
-					<script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.3.0"></script>
-					<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@1.0.2"></script>
         </Head>
 				<ApolloProvider client={client}>
 					<ThemeProvider theme={theme}>
