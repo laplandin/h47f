@@ -14,19 +14,27 @@ import {CircularProgress} from "@material-ui/core";
 import Box from '@material-ui/core/Box';
 import CardList from '../components/CardList';
 import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import AddIcon from '@material-ui/icons/Add';
+import { useRouter } from 'next/router';
 
-const fabStyled = makeStyles(theme => ({
+const useFabStyles = makeStyles(theme => ({
 	fab: {
 		position: 'absolute',
 		right: 0,
 		bottom: 0,
+		color: 'white'
 	},
 }));
 
 function AddFab () {
+	const router = useRouter();
+	const classes = useFabStyles();
+	const onClick = (e) => {
+		router.push('/course/create');
+	};
+	
 	return (
-		<Fab className={fabStyled.fab} color="primary" aria-label="add">
+		<Fab onClick={onClick} className={classes.fab} color="primary" aria-label="add">
 			<AddIcon />
 		</Fab>
 	)
@@ -35,8 +43,10 @@ function AddFab () {
 export default function Index(props) {
 	return (
 		<AppLayout>
-			<CustomizedTabs/>
-			<AddFab />
+			<div style={{position: 'relative'}}>
+				<CustomizedTabs/>
+				<AddFab />
+			</div>
 		</AppLayout>
 	)
 }
@@ -145,7 +155,11 @@ function CustomizedTabs() {
 		setValue(newValue);
 	};
 	
-	if (loading) return <CircularProgress />
+	if (loading) return (
+		<div style={{ display: 'flex', justifyContent: 'center' }}>
+			<CircularProgress />
+		</div>
+	)
 	
 	return (
 		<div className={classes.root}>
