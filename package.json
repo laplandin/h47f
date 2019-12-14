@@ -1,0 +1,48 @@
+{
+  "name": "nextjs",
+  "version": "4.0.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "@editorjs/checklist": "^1.1.0",
+    "@editorjs/delimiter": "^1.1.0",
+    "@editorjs/editorjs": "^2.16.1",
+    "@editorjs/embed": "^2.2.1",
+    "@editorjs/header": "^2.3.2",
+    "@editorjs/image": "^2.3.3",
+    "@editorjs/link": "^2.1.3",
+    "@editorjs/list": "^1.4.0",
+    "@editorjs/marker": "^1.2.2",
+    "@editorjs/paragraph": "^2.6.1",
+    "@editorjs/quote": "^2.3.0",
+    "@editorjs/raw": "^2.1.1",
+    "@editorjs/simple-image": "^1.3.3",
+    "@editorjs/table": "^1.2.0",
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.5.1",
+    "@svgr/webpack": "^4.3.3",
+    "apollo-boost": "^0.4.4",
+    "apollo-link-http": "^1.5.16",
+    "clsx": "latest",
+    "graphql": "^14.5.8",
+    "mobx": "^5.15.0",
+    "mobx-react": "^6.1.4",
+    "next": "latest",
+    "next-fonts": "^0.19.0",
+    "next-routes": "^1.4.2",
+    "node-fetch": "^2.6.0",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-editor-js": "^1.4.1"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.7.4"
+  }
+}
