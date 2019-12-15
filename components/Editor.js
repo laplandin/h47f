@@ -30,7 +30,7 @@ export const EDITOR_JS_TOOLS = {
 	simpleImage: SimpleImage
 };
 
-export default function Editor() {
-	return <EditorJs tools={EDITOR_JS_TOOLS} />;
+export default function Editor(props) {
+	return <EditorJs data={props.data} tools={EDITOR_JS_TOOLS} />;
 };
 
