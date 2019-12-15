@@ -23,17 +23,14 @@ const useLoaderStyles = makeStyles({
 	},
 });
 
-const GET_COURSE = gql`
-    query course($id: ID!){
-        course(id: $id) {
+const GET_CHAPTER = gql`
+    query chapter($courseId: ID!, $chapterId: ID!){
+        chapter(courseId: $courseId, chapterId: $chapterId) {
             id
-            chapters {
-                id
-                title
-                done
-                duration
-								content
-            }
+			title
+			done
+			duration
+			content
         }
     }
 `;
@@ -41,9 +38,9 @@ const GET_COURSE = gql`
 export default function Chapter(props) {
 	const router = useRouter();
 	const classes = useLoaderStyles();
-	const { courseId } = router.query;
-	const { loading, error, data } = useQuery(GET_COURSE, {
-		variables: { id: courseId}
+	const { courseId, chapter: chapterId } = router.query;
+	const { loading, error, data } = useQuery(GET_CHAPTER, {
+		variables: { courseId, chapterId }
 	});
 	
 	if (loading) {
@@ -55,21 +52,19 @@ export default function Chapter(props) {
 			</AppLayout>
 		)
 	} else {
-		const { course } = data;
-		const { chapter: chapterId } = router.query;
-		const chapter = course.chapters.find(c => c.id === chapterId);
+		const { chapter } = data;
 		return (
 			<AppLayout>
-				<ChapterEditor chapter={chapter} />
+				<ChapterEditor content={chapter.content} />
 			</AppLayout>
 		)
 	}
 };
 
 function ChapterEditor(props) {
-	const { chapter } = props;
-	console.log(JSON.parse(chapter.content))
+	const { content } = props;
+	console.log(JSON.parse(content));
 	return (
-			<EditorJs data={JSON.parse(chapter.content)} />
+		<EditorJs data={JSON.parse(content)} />
 	)
 }

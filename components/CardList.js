@@ -17,7 +17,10 @@ import { TAG_MAP } from "../consts";
 
 const useStyles = makeStyles(theme => ({
 	card: {
+		marginLeft: '10px',
+		marginRight: '10px',
 		maxWidth: 345,
+		minWidth: 345,
 	},
 	media: {
 		height: 0,
@@ -63,17 +66,16 @@ function CardItem(props) {
 				title={title}
 			/>
 			<CardContent>
-				<Typography variant="body2" color="textSecondary" component="p">
-					{description}
+				<Typography variant="body2" color="textPrimary" component="p">
+					{`${description.slice(0, 100)} ${description.length>100 ? '...' : ''}`}
 				</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
-				<Link href={`/course/[id]`} as={`/course/${id}`}>
-					<Button color="primary">Подробнее</Button>
-				</Link>
-				<IconButton aria-label="share">
-					<ShareIcon className={classes.share} />
-				</IconButton>
+				<div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+					<Link href={`/course/[id]`} as={`/course/${id}`}>
+						<Button color="primary">Подробнее</Button>
+					</Link>
+				</div>
 			</CardActions>
 		</Card>
 	);
@@ -81,5 +83,9 @@ function CardItem(props) {
 
 export default function CardList (props) {
 	const { items: { courses } } = props;
-	return courses.map(item => <CardItem {...item} key={item.id} />)
+	return (
+		<div style={{ display: 'flex'}}>
+			{ courses.map(item => <CardItem {...item} key={item.id} />) }
+		</div>
+	)
 }

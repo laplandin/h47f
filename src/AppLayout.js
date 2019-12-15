@@ -116,6 +116,8 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: theme.spacing(4),
 		paddingBottom: theme.spacing(4),
 		background: 'rgba(0, 66, 132, 0.05)',
+		maxWidth: '100%',
+		minHeight: `calc(100vh - 64px)`,
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -189,9 +191,9 @@ export default function Dashboard(props) {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.appBarSpacer} />
-				<Container maxWidth="lg" className={classes.container}>
+				<Container className={classes.container}>
 					{props.children}
-					<Box pt={4}>
+					<Box style={{ position: 'absolute', bottom: '50px', justifyContent: 'center' }} pt={4}>
 						<Copyright />
 					</Box>
 				</Container>

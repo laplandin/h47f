@@ -16,37 +16,13 @@ import CardList from '../components/CardList';
 import Fab from "@material-ui/core/Fab";
 import AddIcon from '@material-ui/icons/Add';
 import { useRouter } from 'next/router';
-
-const useFabStyles = makeStyles(theme => ({
-	fab: {
-		position: 'absolute',
-		right: 0,
-		bottom: 0,
-		color: 'white'
-	},
-}));
-
-function AddFab () {
-	const router = useRouter();
-	const classes = useFabStyles();
-	const onClick = (e) => {
-		router.push('/course/create');
-	};
-	
-	return (
-		<Fab onClick={onClick} className={classes.fab} color="primary" aria-label="add">
-			<AddIcon />
-		</Fab>
-	)
-}
+import AddFab from '../components/Fab';
 
 export default function Index(props) {
 	return (
 		<AppLayout>
-			<div style={{position: 'relative'}}>
-				<CustomizedTabs/>
-				<AddFab />
-			</div>
+			<CustomizedTabs/>
+			<AddFab />
 		</AppLayout>
 	)
 }
@@ -147,44 +123,43 @@ function CustomizedTabs() {
 		console.log('fetch error', error);
 		return <div />;
 	}
-	if (!loading) {
-		console.log('>>', data);
-	}
 	
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
 	
-	if (loading) return (
-		<div style={{ display: 'flex', justifyContent: 'center' }}>
-			<CircularProgress />
-		</div>
-	)
-	
-	return (
-		<div className={classes.root}>
-			<div className={classes.demo1}>
-				<AntTabs value={value} onChange={handleChange} aria-label="ant example">
-					<AntTab icon={<AllIcon/>} label="Все" />
-					<AntTab icon={<TreeIcon/>} label="Категория 1" />
-					<AntTab icon={<CloudyIcon/>} label="Категория 2" />
-					<AntTab icon={<BatIcon/>} label="Категория 3" />
-				</AntTabs>
-				<TabPanel value={value} index={0}>
-					<CardList items={data} />
-				</TabPanel>
-				<TabPanel value={value} index={1}>
-					Item Two
-				</TabPanel>
-				<TabPanel value={value} index={2}>
-					Item Three
-				</TabPanel>
-				<TabPanel value={value} index={3}>
-					Item Four
-				</TabPanel>
-				<Typography className={classes.padding} />
+	if (loading) {
+		return (
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
+				<CircularProgress />
 			</div>
-		</div>
-	);
+		)
+	} else {
+		return (
+			<div className={classes.root}>
+				<div className={classes.demo1}>
+					<AntTabs value={value} onChange={handleChange} aria-label="ant example">
+						<AntTab icon={<AllIcon/>} label="Все"/>
+						<AntTab icon={<TreeIcon/>} label="Категория 1"/>
+						<AntTab icon={<CloudyIcon/>} label="Категория 2"/>
+						<AntTab icon={<BatIcon/>} label="Категория 3"/>
+					</AntTabs>
+					<TabPanel value={value} index={0}>
+						<CardList items={data}/>
+					</TabPanel>
+					<TabPanel value={value} index={1}>
+						Item Two
+					</TabPanel>
+					<TabPanel value={value} index={2}>
+						Item Three
+					</TabPanel>
+					<TabPanel value={value} index={3}>
+						Item Four
+					</TabPanel>
+					<Typography className={classes.padding}/>
+				</div>
+			</div>
+		);
+	}
 }
 

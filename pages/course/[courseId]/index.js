@@ -132,9 +132,11 @@ function CourseCard (props) {
 				<Typography>Содержание</Typography>
 				{
 					chapters.map((chapter, index) => (
-						<Link key={chapter.id} href={`/course/${courseId}/${chapter.id}`}>
-							<a className={classes.link}>{`${index+1}.${chapter.title}`}</a>
-						</Link>
+						<div style={{ marginTop: '15px' }}>
+							<Link key={chapter.id} href={`/course/${courseId}/${chapter.id}`}>
+								<a className={classes.link}>{`${index+1}.${chapter.title}`}</a>
+							</Link>
+						</div>
 					))
 				}
 				<div className={classes.actions}>

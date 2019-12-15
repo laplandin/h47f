@@ -34,7 +34,8 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-editor-js": "^1.4.1"
+    "react-editor-js": "^1.4.1",
+    "recharts": "^2.0.0-beta.1"
   },
   "scripts": {
     "dev": "next",
